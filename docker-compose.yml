@@ -1,28 +1,17 @@
 version: "3.7"
 
 services:
-  database_template:
+  database_blog:
     image: postgres
-    container_name: database_template
+    container_name: database_blog
     ports:
       - 5432:5432
     environment:
-      - POSTGRES_USER=template
-      - POSTGRES_PASSWORD=template
-      - POSTGRES_DB=template_db
+      - POSTGRES_USER=blog
+      - POSTGRES_PASSWORD=blog@158
+      - POSTGRES_DB=blog
     volumes:
       - pgdata:/data/postgres
-  app:
-    build: .
-    container_name: template
-    ports: 
-      - 3333:3333
-    volumes:
-      - .:/usr/app
-    links:
-      - database_template
-    depends_on: 
-      - database_template
 
 volumes:
   pgdata:
