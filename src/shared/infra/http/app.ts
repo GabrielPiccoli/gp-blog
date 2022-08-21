@@ -7,7 +7,7 @@ import { MulterError } from "multer";
 import swaggerUi from "swagger-ui-express";
 
 import "../../container";
-// import upload from "@config/upload";
+import upload from "@config/upload";
 import { AppError } from "@shared/errors/AppError";
 
 import swaggerFile from "../../../swagger.json";
@@ -23,7 +23,7 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 app.use(cors());
 
-// app.use("/example", express.static(`${upload.tmpFolder}/example`));
+app.use("/authors", express.static(`${upload.tmpFolder}/authors`));
 
 app.use(router);
 
