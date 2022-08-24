@@ -3,10 +3,13 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  OneToMany,
   PrimaryColumn,
   UpdateDateColumn,
 } from "typeorm";
 import { v4 as uuidV4 } from "uuid";
+
+import { Article } from "@modules/articles/infra/typeorm/entities/Article";
 
 @Entity("authors")
 class Author {
@@ -29,6 +32,9 @@ class Author {
   image_url(): string {
     return `${process.env.APP_URL}/authors/${this.image}`;
   }
+
+  @OneToMany(() => Article, (article) => article.author)
+  articles: Article[];
 
   @CreateDateColumn()
   created_at: Date;

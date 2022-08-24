@@ -1,6 +1,8 @@
 import { container } from "tsyringe";
 
 import "@shared/container/providers";
+import { ArticlesRepository } from "@modules/articles/infra/typeorm/repositories/ArticlesRepository";
+import { IArticlesRepository } from "@modules/articles/repositories/IArticlesRepository";
 import { AuthorsRepository } from "@modules/authors/infra/typeorm/repositories/AuthorsRepository";
 import { IAuthorsRepository } from "@modules/authors/repositories/IAuthorsRepository";
 import { CategoriesRepository } from "@modules/categories/infra/typeorm/repositories/CategoriesRepository";
@@ -28,4 +30,9 @@ container.registerSingleton<ICategoriesRepository>(
 container.registerSingleton<IAuthorsRepository>(
   "AuthorsRepository",
   AuthorsRepository
+);
+
+container.registerSingleton<IArticlesRepository>(
+  "ArticlesRepository",
+  ArticlesRepository
 );
